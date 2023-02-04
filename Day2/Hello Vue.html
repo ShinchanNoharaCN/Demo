@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello Vue</title>
+</head>
+<body>
+
+    <div id="app">
+        <div>
+        <!--<h1> Hello Vue </h1>
+            <p> Mon Jan 30 2023 18:32:35 GMT+0800 (台北标准时间) </p>
+        -->
+            <h1> {{ msg }} </h1>
+            <p> {{ new Date }} </p>
+        </div>
+        <hr>
+        <div>
+            <h1> {{ msg }} </h1>
+            <!-- <my-com></my-com> -->
+            <button v-on:click="msg = 'Hello Event !'"> setter msg </button>
+            <button @click="handleGetMsg"> getter msg </button>
+        </div>
+    </div>
+
+    <script src="vue.js"></script>
+    <script>
+
+        /* Vue.component('my-com', {
+            template: '<h2> {{ msg }} </h2>',
+            data() {
+                return {
+                    msg: 'Hello Vue Component !'
+                }
+            }
+        }) */
+
+        var app = new Vue({
+            /* el: '#app', */
+            data() {
+                return {
+                    msg: "Hello Vue !"
+                }
+            },
+            //timecycle hook function
+            created() {
+                console.log('created')
+            },
+            mounted: function() {
+                console.log(this.msg, 'mounted')
+            },
+            updated() {
+                console.log('updated')
+            },
+            methods: {
+                handleGetMsg() {
+                    console.log(this.msg, new Date())
+                }
+            }
+        }).$mount('#app')
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Test2</title>
+    <style>
+        ul
+        {
+            margin: 0;
+            padding: 0;
+        }
+        ul li
+        {
+            width: 350px;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #000000;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1> 待办事项 </h1>
+        <div>
+            <input type="text">
+            <button> Add #1 </button>
+        </div>
+        <ul v-if="todolist.length > 0">
+            <li v-for="item of todolist">
+                <span> {{ item.text }} </span>
+                <button> X </button>
+            </li>
+        </ul>
+        <h5 v-else> 暂无数据 </h5>
+    </div>
+
+    <script src="vue.js"></script>
+    <script>
+        /* for (let item of []) */
+        var app = new Vue({
+            data() {
+                return {
+                    todolist: [
+                        {id: 11, text: 'Eat', isComplete: true},
+                        {id: 12, text: 'Sleep', isComplete: false},
+                        {id: 34, text: 'Hit Dodo', isComplete: false},
+                        {id: 24, text: 'And Then Eat', isComplete: false},
+                    ]
+                }
+            },
+            methods: {
+
+            }
+        }).$mount('#app')
+    </script>
+</body>
+</html>

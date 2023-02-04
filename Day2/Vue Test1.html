@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello Vue</title>
+</head>
+<body>
+
+    <div id="app">
+            <!-- View -->
+        <h1 class="heading"> {{ msg }} </h1>
+        <div>
+            <!-- <input type="text" :value="textVal" @input="handleInput"> -->
+            <!-- v-model可以做双向数据绑定 -->
+            <!-- <input type="text" v-model="textVal"> -->
+            <input type="text" v-model.lazy="textVal">
+            <button @click="headleSubmit"> 提交 </button>
+        </div>
+        <p> {{ textVal }} </p>
+    </div>
+
+    <!-- 
+        mode to view (v)
+        view to mode (x) v-model可以做双向数据绑定 (v)
+
+        MVVM Modele
+     -->
+
+    <script src="vue.js"></script>
+    <script>
+        var app = new Vue({
+            data() {
+                return {
+                    msg: "Hello Vue !",
+                    textVal: 'default value !'
+                }
+            },
+            methods: {
+                /* handleInput(event) {
+                    this.textVal = event.target.value
+                }, */
+                headleSubmit() {
+                    console.log(this.textVal)
+                }
+            }
+        }).$mount('#app')
+    </script>
+</body>
+</html>
